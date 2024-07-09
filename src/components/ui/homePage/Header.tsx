@@ -62,14 +62,16 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <img
-          className="size-7 text-primary"
-          src="../../../../public/facicon1.png"
-          alt=""
-        />
-        <a className="text-xl font-bold ml-2">
-          Fitness <span className="text-blue-500">H</span>ub
-        </a>
+        <div className="flex justify-center items-center navbar-center">
+          <img
+            className="size-7 text-primary"
+            src="../../../../public/favicon1.png"
+            alt=""
+          />
+          <a className="text-xl font-bold ml-2">
+            Fitness <span className="text-blue-500">H</span>ub
+          </a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex navbar-end">
         <ul className="menu menu-horizontal px-1">
