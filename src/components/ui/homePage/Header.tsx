@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { navLinks } from "../../../utils/navlinks";
 
 const Header = () => {
   return (
@@ -25,91 +26,31 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>
-                <NavLink to="/">Home</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/products">Products</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/products/management">Management</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/products/details">Details</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/products/cart">Cart</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/products/checkout">Checkout</NavLink>
-              </a>
-            </li>
-            <li>
-              <a>
-                <NavLink to="/about">About Us</NavLink>
-              </a>
-            </li>
+            {navLinks.map((navlink, index) => (
+              <li key={index}>
+                <a>
+                  <NavLink to={navlink.path}>{navlink.name}</NavLink>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="flex justify-center items-center navbar-center">
-          <img
-            className="size-7 text-primary"
-            src="../../../../public/favicon1.png"
-            alt=""
-          />
+          <img className="size-7" src="../../../../public/favicon.png" alt="" />
           <a className="text-xl font-bold ml-2">
-            Fitness <span className="text-blue-500">H</span>ub
+            Fitness <span className="text-primary">H</span>ub
           </a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex navbar-end">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>
-              <NavLink to="/">Home</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/products">Products</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/products/management">Management</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/products/details">Details</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/products/cart">Cart</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/products/checkout">Checkout</NavLink>
-            </a>
-          </li>
-          <li>
-            <a>
-              <NavLink to="/about">About Us</NavLink>
-            </a>
-          </li>
+          {navLinks.map((navlink, index) => (
+            <li key={index}>
+              <a>
+                <NavLink to={navlink.path}>{navlink.name}</NavLink>
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

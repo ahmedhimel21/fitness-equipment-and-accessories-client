@@ -14,7 +14,6 @@ const Products = () => {
     error,
     isLoading,
   } = useGetProductsQuery(selectedCategory);
-  console.log(selectedCategory);
 
   const handleFilterReset = () => {
     dispatch(clearCategory());
@@ -25,7 +24,7 @@ const Products = () => {
 
   return (
     <>
-      <div>
+      <div className="mb-8">
         <h1 className="text-2xl font-bold mb-4">Products</h1>
         {selectedCategory && (
           <div className="mb-4">

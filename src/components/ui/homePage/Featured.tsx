@@ -21,7 +21,7 @@ const Featured = () => {
       <div className="my-8">
         <h2 className="text-2xl font-bold mb-4">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products?.data?.map((product: TProduct) => (
+          {products?.data?.slice(0, 6).map((product: TProduct) => (
             <div key={product._id} className="border p-4">
               <img
                 src={product.image}
