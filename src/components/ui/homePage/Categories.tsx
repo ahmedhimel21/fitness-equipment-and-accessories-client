@@ -21,8 +21,8 @@ const Categories = () => {
   const categories = products ? getUniqueCategoriesByName(products?.data) : [];
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
         {categories?.map((category, index) => (
           <div
             key={index}
@@ -36,7 +36,7 @@ const Categories = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
