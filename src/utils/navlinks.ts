@@ -12,10 +12,6 @@ export const navLinks = [
     path: "/products/management",
   },
   {
-    name: "Details",
-    path: "/products/details",
-  },
-  {
     name: "Cart",
     path: "/products/cart",
   },
