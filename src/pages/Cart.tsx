@@ -1,15 +1,32 @@
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
+import {
+  removeFromCart,
+  updateCartQuantity,
+} from "../redux/features/cart/cartSlice";
 
 const Cart = () => {
   const cart = useAppSelector((state: RootState) => state.cart);
-  // console.log({ items, _persist });
-  const getTotalPrice = () => {
+  const dispatch = useAppDispatch();
+  // calculate total price
+  const totalPrice = () => {
     return cart.items.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (acc, item) => acc + item.price * item.quantity,
       0
     );
+  };
+  // handle remove from cart
+  const handleRemoveFromCart = (id: string) => {
+    if (
+      window.confirm("Are you sure you want to remove this item from the cart?")
+    ) {
+      dispatch(removeFromCart(id));
+    }
+  };
+
+  const handleUpdateQuantity = (id: string, quantity: number) => {
+    dispatch(updateCartQuantity({ id, quantity }));
   };
   return (
     <div className=" p-4">
@@ -40,9 +57,9 @@ const Cart = () => {
                       <div className="flex items-center justify-center">
                         <button
                           className="btn btn-secondary btn-xs"
-                          // onClick={() =>
-                          //   handleQuantityChange(item._id, Math.max(item.quantity - 1, 1))
-                          // }
+                          onClick={() =>
+                            handleUpdateQuantity(item._id, item.quantity - 1)
+                          }
                           disabled={item.quantity <= 1}
                         >
                           -
@@ -50,9 +67,9 @@ const Cart = () => {
                         <span className="mx-2">{item.quantity}</span>
                         <button
                           className="btn btn-secondary btn-xs"
-                          // onClick={() =>
-                          //   handleQuantityChange(item._id, Math.min(item.quantity + 1, item.stock))
-                          // }
+                          onClick={() =>
+                            handleUpdateQuantity(item._id, item.quantity + 1)
+                          }
                           disabled={item.quantity >= item.stock}
                         >
                           +
@@ -65,7 +82,7 @@ const Cart = () => {
                     <td className="border px-4 py-2">
                       <button
                         className="btn btn-error btn-xs"
-                        // onClick={() => handleRemoveFromCart(item._id)}
+                        onClick={() => handleRemoveFromCart(item._id)}
                       >
                         Remove
                       </button>
@@ -77,7 +94,7 @@ const Cart = () => {
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
             <h2 className="text-2xl mb-2 sm:mb-0">
-              Total: ${getTotalPrice().toFixed(2)}
+              Total: ${totalPrice().toFixed(2)}
             </h2>
             <NavLink to="/products/checkout">
               <button className="btn btn-primary">Proceed to Checkout</button>
