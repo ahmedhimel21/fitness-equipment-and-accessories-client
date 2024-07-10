@@ -26,7 +26,16 @@ export const baseApi = createApi({
         };
       },
     }),
+    getSpecificProduct: builder.query({
+      query: (id) => {
+        console.log(id);
+        return {
+          url: `/products/${id}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = baseApi;
+export const { useGetProductsQuery, useGetSpecificProductQuery } = baseApi;

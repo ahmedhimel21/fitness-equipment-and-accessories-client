@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import ErrorPage from "../components/ui/global/ErrorPage";
 import ProgressBar from "../components/ui/global/ProgressBar";
 import Category from "../components/ui/productsPage/Category";
@@ -12,6 +13,12 @@ import { TProduct } from "../types";
 
 const Products = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  //view details  button functionality
+  const handleViewDetails = (id: string) => {
+    navigate(`/products/details/${id}`);
+  };
   // grab category name from local state
   const selectedCategory = useAppSelector(
     (state: RootState) => state.category.category
@@ -85,7 +92,12 @@ const Products = () => {
               />
               <h2 className="text-xl">{product.name}</h2>
               <p>Price: ${product.price}</p>
-              <button className="btn btn-primary mt-2">View Details</button>
+              <button
+                onClick={() => handleViewDetails(product._id)}
+                className="btn btn-primary mt-2"
+              >
+                View Details
+              </button>
             </div>
           ))}
         </div>
