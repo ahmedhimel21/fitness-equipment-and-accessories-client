@@ -1,3 +1,7 @@
+import Category from "../components/ui/productsPage/Category";
+import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
+import SearchBar from "../components/ui/productsPage/SearchBar";
+import Sorting from "../components/ui/productsPage/Sorting";
 import { useGetProductsQuery } from "../redux/api/baseApi";
 import { clearCategory } from "../redux/features/category/categorySlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -6,14 +10,25 @@ import { TProduct } from "../types";
 
 const Products = () => {
   const dispatch = useAppDispatch();
+
   const selectedCategory = useAppSelector(
     (state: RootState) => state.category.category
   );
+
+  const { searchTerm, sort, categories } = useAppSelector(
+    (state: RootState) => state.filters
+  );
+
   const {
     data: products,
     error,
     isLoading,
-  } = useGetProductsQuery(selectedCategory);
+  } = useGetProductsQuery({
+    category: selectedCategory,
+    searchTerm,
+    sort,
+    categories,
+  });
 
   const handleFilterReset = () => {
     dispatch(clearCategory());
@@ -25,6 +40,15 @@ const Products = () => {
   return (
     <>
       <div className="mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+          <SearchBar></SearchBar>
+          {/* category */}
+          <Category></Category>
+          {/* sorting */}
+          <Sorting></Sorting>
+          {/* clear button */}
+          <ClearFilterButton></ClearFilterButton>
+        </div>
         <h1 className="text-2xl font-bold mb-4">Products</h1>
         {selectedCategory && (
           <div className="mb-4">

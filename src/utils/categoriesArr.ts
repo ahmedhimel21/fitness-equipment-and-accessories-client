@@ -1,4 +1,4 @@
-export const categories = [
+export const categoriesArr = [
   {
     name: "Gym Equipment",
     image: "../../public/images/Gym Equipment.png",

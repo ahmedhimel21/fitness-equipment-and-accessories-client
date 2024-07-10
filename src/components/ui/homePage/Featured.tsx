@@ -3,7 +3,11 @@ import { useGetProductsQuery } from "../../../redux/api/baseApi";
 import { TProduct } from "../../../types";
 
 const Featured = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery(undefined);
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useGetProductsQuery({ undefined });
   const navigate = useNavigate();
 
   const handleExploreMore = () => {

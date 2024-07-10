@@ -5,11 +5,21 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (category) => {
-        console.log(category);
+      query: ({ category, searchTerm, sort, categories }) => {
+        // console.log(categories.join(","));
+        // console.log((categories as string[]).join(","));
         const params = new URLSearchParams();
         if (category) {
           params.append("category", category);
+        }
+        if (searchTerm) {
+          params.append("searchTerm", searchTerm);
+        }
+        if (sort) {
+          params.append("sort", sort.sort);
+        }
+        if (categories && categories.length > 0) {
+          params.append("category", categories);
         }
         return {
           url: "/products",
