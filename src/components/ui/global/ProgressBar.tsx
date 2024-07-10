@@ -1,6 +1,6 @@
 const ProgressBar = () => {
   return (
-    <div>
+    <div className="my-8">
       <p>Loading...</p>
       <progress
         className="progress progress-primary w-56"
