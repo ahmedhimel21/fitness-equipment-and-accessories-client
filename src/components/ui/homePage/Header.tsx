@@ -29,7 +29,7 @@ const Header = () => {
             {/* mapping navlinks and showing */}
             {navLinks.map((navlink, index) => (
               <li key={index}>
-                <a>
+                <a className="px-4">
                   <NavLink to={navlink.path}>{navlink.name}</NavLink>
                 </a>
               </li>
@@ -48,7 +48,7 @@ const Header = () => {
           {/* mapping navlinks and showing */}
           {navLinks.map((navlink, index) => (
             <li key={index}>
-              <a>
+              <a className="px-4">
                 <NavLink to={navlink.path}>{navlink.name}</NavLink>
               </a>
             </li>

@@ -5,7 +5,7 @@ import Category from "../components/ui/productsPage/Category";
 import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 import SearchBar from "../components/ui/productsPage/SearchBar";
 import Sorting from "../components/ui/productsPage/Sorting";
-import { useGetProductsQuery } from "../redux/api/baseApi";
+import { useGetProductsQuery } from "../redux/features/product/productApi";
 import { clearCategory } from "../redux/features/category/categorySlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
