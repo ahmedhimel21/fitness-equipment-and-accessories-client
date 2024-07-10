@@ -28,7 +28,6 @@ const Featured = () => {
   if (isLoading) {
     return (
       <div>
-        <p>Loading...</p>
         <ProgressBar></ProgressBar>
       </div>
     );

@@ -41,7 +41,11 @@ const ProductDetails = () => {
     <>
       <div className="card card-side bg-base-100 shadow-xl mb-8">
         <figure>
-          <img src={product.image} alt={product.name} />
+          <img
+            className="w-full md:h-96"
+            src={product.image}
+            alt={product.name}
+          />
         </figure>
         <div className="card-body">
           <h1 className="text-3xl font-bold mb-0">{product.name}</h1>
