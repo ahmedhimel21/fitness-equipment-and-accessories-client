@@ -5,7 +5,6 @@ const SearchBar = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      {/* input search */}
       <label className="input input-bordered flex items-center gap-2">
         <input
           onChange={(e) => dispatch(setSearchTerm(e.target.value))}

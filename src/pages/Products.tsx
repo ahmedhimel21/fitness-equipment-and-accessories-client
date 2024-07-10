@@ -1,3 +1,5 @@
+import ErrorPage from "../components/ui/global/ErrorPage";
+import ProgressBar from "../components/ui/global/ProgressBar";
 import Category from "../components/ui/productsPage/Category";
 import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 import SearchBar from "../components/ui/productsPage/SearchBar";
@@ -10,15 +12,16 @@ import { TProduct } from "../types";
 
 const Products = () => {
   const dispatch = useAppDispatch();
-
+  // grab category name from local state
   const selectedCategory = useAppSelector(
     (state: RootState) => state.category.category
   );
 
+  // grab filtering value from local state
   const { searchTerm, sort, categories } = useAppSelector(
     (state: RootState) => state.filters
   );
-
+  //fetching data
   const {
     data: products,
     error,
@@ -29,13 +32,27 @@ const Products = () => {
     sort,
     categories,
   });
-
+  // reset filters
   const handleFilterReset = () => {
     dispatch(clearCategory());
   };
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading products</div>;
+  //if state is loading return loading page
+  if (isLoading) {
+    return (
+      <div className="h-full flex justify-center items-center">
+        <p>Loading...</p>
+        <ProgressBar></ProgressBar>
+      </div>
+    );
+  }
+  //if state is error return error page
+  if (error) {
+    return (
+      <div className="h-full flex justify-center items-center">
+        <ErrorPage></ErrorPage>
+      </div>
+    );
+  }
 
   return (
     <>

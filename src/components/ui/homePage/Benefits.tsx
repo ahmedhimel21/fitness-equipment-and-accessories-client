@@ -1,29 +1,4 @@
-const benefitsData = [
-  {
-    title: "High Quality",
-    description: "Our products are made with the highest quality materials.",
-    image:
-      "https://media.istockphoto.com/id/625739874/photo/heavy-weight-exercise.jpg?s=2048x2048&w=is&k=20&c=1JmhC4Hf9X37bw7PqRpF7eX-0M9zQUPgYAcFCwBa_Fc=",
-  },
-  {
-    title: "Affordable Prices",
-    description: "We offer competitive prices on all our products.",
-    image:
-      "https://www.shutterstock.com/image-vector/richers-help-poorers-concept-rich-600w-696551677.jpg",
-  },
-  {
-    title: "Fast Shipping",
-    description: "Enjoy fast and reliable shipping on all orders.",
-    image:
-      "https://img.freepik.com/premium-vector/fast-shipping-logo_10250-3101.jpg",
-  },
-  {
-    title: "Customer Support",
-    description: "Our team is here to help you 24/7 with any inquiries.",
-    image:
-      "https://cdn.educba.com/academy/wp-content/uploads/2017/02/Customer-Support-1.jpg",
-  },
-];
+import { benefitsData } from "../../../utils/benefitsData";
 
 const Benefits = () => {
   return (

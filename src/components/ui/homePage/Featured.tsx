@@ -1,25 +1,46 @@
 import { useNavigate } from "react-router-dom";
 import { useGetProductsQuery } from "../../../redux/api/baseApi";
 import { TProduct } from "../../../types";
+import ProgressBar from "../global/ProgressBar";
+import ErrorPage from "../global/ErrorPage";
 
 const Featured = () => {
+  // get data which is fetched by RTK query
   const {
     data: products,
     isLoading,
     error,
   } = useGetProductsQuery({ undefined });
+
   const navigate = useNavigate();
 
+  // explore more button functionality
   const handleExploreMore = () => {
     navigate("/products");
   };
 
+  //view details  button functionality
   const handleViewDetails = (id: string) => {
     navigate(`/products/details/${id}`);
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading featured products</div>;
+  // if data is loading showing progress
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+        <ProgressBar></ProgressBar>
+      </div>
+    );
+  }
+  // if any error occur during fetching data showing error
+  if (error) {
+    return (
+      <div className="w-1/2 mx-auto">
+        <ErrorPage></ErrorPage>
+      </div>
+    );
+  }
   return (
     <>
       <div className="my-8">

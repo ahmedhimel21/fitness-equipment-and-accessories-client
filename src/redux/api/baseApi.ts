@@ -6,8 +6,6 @@ export const baseApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: ({ category, searchTerm, sort, categories }) => {
-        // console.log(categories.join(","));
-        // console.log((categories as string[]).join(","));
         const params = new URLSearchParams();
         if (category) {
           params.append("category", category);

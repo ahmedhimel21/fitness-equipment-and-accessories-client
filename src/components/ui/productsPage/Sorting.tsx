@@ -14,7 +14,7 @@ const Sorting = () => {
   return (
     <>
       <div className="mt-4">
-        <label className="mr-2">Sort By Price</label>
+        <label className="mr-2 text-md font-semibold">Sort By Price</label>
         <select
           className="select select-bordered"
           // value={sort}

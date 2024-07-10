@@ -8,7 +8,10 @@ import { categoriesArr } from "../../../utils/categoriesArr";
 
 const Category = () => {
   const dispatch = useAppDispatch();
+  //get local categories
   const { categories } = useAppSelector((state: RootState) => state.filters);
+
+  //dispatch category
   const handleCategoryChange = (category: string) => {
     if (categories.includes(category)) {
       dispatch(removeCategory(category));
@@ -19,6 +22,7 @@ const Category = () => {
   return (
     <>
       <div className="flex space-x-4 mt-4">
+        <label className="text-md font-semibold">Filter product :</label>
         {categoriesArr.map((category) => (
           <label key={category.name} className="flex items-center space-x-2">
             <input

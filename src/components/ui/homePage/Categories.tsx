@@ -7,11 +7,10 @@ const Categories = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleCategoryClick = (category: string) => {
+  // grab category name: navigate and dispatch categoryName basis on category name
+  const handleCategory = (category: string) => {
     navigate("/products"), dispatch(selectCategory(category));
   };
-
-  // const categories = products ? getUniqueCategoriesByName(products?.data) : [];
 
   return (
     <div className="my-8">
@@ -21,10 +20,9 @@ const Categories = () => {
           <div
             key={index}
             className="cursor-pointer border p-4"
-            onClick={() => handleCategoryClick(category.name)}
+            onClick={() => handleCategory(category.name)}
           >
             <div className="w-full h-48 flex items-center justify-center">
-              {/* <span className="text-xl">{category.name}</span> */}
               <img
                 className="w-full h-48 object-contain"
                 src={category.image}
