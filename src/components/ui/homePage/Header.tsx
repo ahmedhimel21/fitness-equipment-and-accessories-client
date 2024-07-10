@@ -45,6 +45,7 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex navbar-end">
         <ul className="menu menu-horizontal px-1">
+          {/* mapping navlinks and showing */}
           {navLinks.map((navlink, index) => (
             <li key={index}>
               <a>
