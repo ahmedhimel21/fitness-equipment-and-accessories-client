@@ -1,8 +1,5 @@
 import { useParams } from "react-router-dom";
-import {
-  useGetSpecificProductQuery,
-  useUpdateProductMutation,
-} from "../redux/features/product/productApi";
+import { useGetSpecificProductQuery } from "../redux/features/product/productApi";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { setToCart } from "../redux/features/cart/cartSlice";
@@ -18,7 +15,6 @@ const ProductDetails = () => {
   const product = data?.data;
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state: RootState) => state.cart);
-  const [updateProduct] = useUpdateProductMutation();
 
   if (isLoading) {
     return <ProgressBar></ProgressBar>;
@@ -38,7 +34,6 @@ const ProductDetails = () => {
   const handleAddToCart = async () => {
     if (!isProductOutOfStock) {
       dispatch(setToCart(product));
-      await updateProduct({ id: id, stock: product.stock - 1 });
       toast.success("Successfully added cart!");
     }
   };
