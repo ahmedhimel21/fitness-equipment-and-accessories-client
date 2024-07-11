@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { TCartInitialState } from "../../../types";
+import EmptyCard from "./EmptyCard";
 
 type TCartCardProps = {
   cart: TCartInitialState;
@@ -17,9 +18,13 @@ const CartCard = ({
   return (
     <>
       <div className=" p-4 my-8">
-        <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+        {!(cart.items.length === 0) ? (
+          <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+        ) : (
+          ""
+        )}
         {cart.items.length === 0 ? (
-          <p>Your cart is empty</p>
+          <EmptyCard></EmptyCard>
         ) : (
           <div>
             <div className="overflow-x-auto">
