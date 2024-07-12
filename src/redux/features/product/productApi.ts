@@ -23,6 +23,7 @@ const productApi = baseApi.injectEndpoints({
           params: params,
         };
       },
+      providesTags: ["product"],
     }),
     getSpecificProduct: builder.query({
       query: (id) => {
@@ -34,11 +35,11 @@ const productApi = baseApi.injectEndpoints({
       providesTags: ["product"],
     }),
     updateProduct: builder.mutation({
-      query: ({ id, stock }) => {
+      query: ({ id, product }) => {
         return {
           url: `/products/${id}`,
-          method: "PUT",
-          body: { stock: stock },
+          method: "PATCH",
+          body: product,
         };
       },
       invalidatesTags: ["product"],

@@ -4,6 +4,7 @@ import categoryReducer from "./features/category/categorySlice";
 import filterReducer from "./features/filter/filterSlice";
 import cartReducer from "./features/cart/cartSlice";
 import storage from "redux-persist/lib/storage";
+import productReduce from "./features/product/productSlice";
 import {
   persistStore,
   persistReducer,
@@ -28,6 +29,7 @@ export const store = configureStore({
     category: categoryReducer,
     filters: filterReducer,
     cart: persistedItemsReducer,
+    product: productReduce,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
