@@ -1,4 +1,4 @@
-import { categoriesArr } from "../../../../utils/categoriesArr";
+import { categoriesArr } from "../../../../utils/categoriesData";
 
 type TCategoriesCardProps = {
   handleCategory: (category: string) => void;

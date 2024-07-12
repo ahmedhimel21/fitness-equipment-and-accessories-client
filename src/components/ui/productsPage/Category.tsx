@@ -4,7 +4,7 @@ import {
 } from "../../../redux/features/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { RootState } from "../../../redux/store";
-import { categoriesArr } from "../../../utils/categoriesArr";
+import { categoriesArr } from "../../../utils/categoriesData";
 
 const Category = () => {
   const dispatch = useAppDispatch();

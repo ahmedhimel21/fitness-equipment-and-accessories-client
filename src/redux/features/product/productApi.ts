@@ -5,9 +5,6 @@ const productApi = baseApi.injectEndpoints({
     getProducts: builder.query({
       query: ({ searchTerm, sort, categories }) => {
         const params = new URLSearchParams();
-        // if (category) {
-        //   params.append("category", category);
-        // }
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
         }
