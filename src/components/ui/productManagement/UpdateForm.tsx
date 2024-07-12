@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetSpecificProductQuery,
   useUpdateProductMutation,
 } from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
 import handleImageUpload from "../../../utils/handleImageUpload";
+
 const UpdateForm = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   //get specific data
   const { data } = useGetSpecificProductQuery(id);
@@ -37,6 +39,7 @@ const UpdateForm = () => {
     };
     await updateProduct({ id, product });
     toast.success("Product updated successfully");
+    navigate("/products/management");
   };
   return (
     <>

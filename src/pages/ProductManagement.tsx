@@ -1,17 +1,27 @@
+import { toast } from "sonner";
 import ErrorPage from "../components/ui/global/ErrorPage";
 import ProgressBar from "../components/ui/global/ProgressBar";
-import { useGetProductsQuery } from "../redux/features/product/productApi";
+import {
+  useDeleteProductMutation,
+  useGetProductsQuery,
+} from "../redux/features/product/productApi";
 import { TProduct } from "../types";
 import { NavLink } from "react-router-dom";
 
 const ProductManagement = () => {
   const { data: products, isLoading, error } = useGetProductsQuery({});
+  const [deleteProduct] = useDeleteProductMutation();
   if (isLoading) {
     return <ProgressBar></ProgressBar>;
   }
   if (error) {
     return <ErrorPage></ErrorPage>;
   }
+  //handle delete
+  const handleDelete = (id: string) => {
+    deleteProduct(id);
+    toast.success("Product deleted successfully");
+  };
 
   return (
     <>
@@ -44,7 +54,7 @@ const ProductManagement = () => {
                   </NavLink>
                   <button
                     className="bg-red-500 text-white py-1 px-2 rounded"
-                    // onClick={() => handleDelete(product._id)}
+                    onClick={() => handleDelete(product._id!)}
                   >
                     Delete
                   </button>

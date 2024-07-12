@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import handleImageUpload from "../../../utils/handleImageUpload";
 import { useCreateProductMutation } from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const CreateProductForm = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const [createProduct] = useCreateProductMutation();
 
@@ -24,6 +26,7 @@ const CreateProductForm = () => {
     };
     await createProduct(product);
     toast.success("Product created successfully");
+    navigate("/products/management");
   };
   return (
     <>
