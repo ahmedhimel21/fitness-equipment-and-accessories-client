@@ -26,7 +26,6 @@ const ProductDetails = () => {
 
   // find matching cart item
   const cartItem = cart.items.find((item) => item._id === product._id);
-  console.log(cartItem);
   //check is the product out of stock or not
   const isProductOutOfStock = cartItem
     ? cartItem.quantity >= product.stock
@@ -44,6 +43,7 @@ const ProductDetails = () => {
       <ProductDetailsCard
         product={product}
         handleAddToCart={handleAddToCart}
+        isProductOutOfStock={isProductOutOfStock}
       ></ProductDetailsCard>
     </>
   );

@@ -22,6 +22,7 @@ const Products = () => {
   const { searchTerm, sort, categories } = useAppSelector(
     (state: RootState) => state.filters
   );
+  // console.log(minPrice, maxPrice);
   //fetching data
   const {
     data: products,
@@ -56,6 +57,7 @@ const Products = () => {
           <SearchBar></SearchBar>
           {/* category */}
           <Category></Category>
+
           {/* sorting */}
           <Sorting></Sorting>
           {/* clear button */}

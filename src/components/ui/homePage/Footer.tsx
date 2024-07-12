@@ -11,7 +11,7 @@ const Footer = () => {
           <p className="font-bold">
             Fitness Hub
             <br />
-            Providing reliable fitness equipment and accessories 1992
+            Providing reliable fitness equipment and accessories since 1992
           </p>
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>

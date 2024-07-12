@@ -49,7 +49,7 @@ const ProductManagement = () => {
                 <td>{product?.name}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>
-                <td className="py-2 px-4 border-b">
+                <td className="py-2 px-4 border-b space-y-2">
                   <NavLink to={`/products/update/${product._id}`}>
                     <button className="bg-yellow-500 text-white py-1 px-2 rounded mr-2">
                       Update
