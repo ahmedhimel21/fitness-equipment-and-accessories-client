@@ -16,10 +16,6 @@ export const navLinks = [
     path: "/products/cart",
   },
   {
-    name: "Checkout",
-    path: "/products/checkout",
-  },
-  {
     name: "About Us",
     path: "/about",
   },

@@ -9,6 +9,7 @@ import Checkout from "../pages/Checkout";
 import AboutUs from "../pages/AboutUs";
 import SuccessPage from "../components/ui/checkout/SuccessPage";
 import UpdateForm from "../components/ui/productManagement/UpdateForm";
+import CreateProductForm from "../components/ui/productManagement/CreateProductForm";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "update/:id",
         element: <UpdateForm></UpdateForm>,
+      },
+      {
+        path: "create-product",
+        element: <CreateProductForm></CreateProductForm>,
       },
     ],
   },
