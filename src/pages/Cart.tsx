@@ -20,7 +20,9 @@ const Cart = () => {
   // handle remove from cart
   const handleRemoveFromCart = (id: string) => {
     if (
-      window.confirm("Are you sure you want to remove this item from the cart?")
+      window.confirm(
+        "Are you sure, you want to remove this item from the cart?"
+      )
     ) {
       dispatch(removeFromCart(id));
     }

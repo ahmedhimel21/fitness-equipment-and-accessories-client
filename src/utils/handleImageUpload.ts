@@ -11,7 +11,7 @@ const handleImageUpload = async (file: string | Blob) => {
     );
 
     const data = await response.json();
-    return data.data;
+    return data?.data;
   } catch (err) {
     console.log(err);
   }

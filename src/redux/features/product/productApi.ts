@@ -3,11 +3,11 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({ category, searchTerm, sort, categories }) => {
+      query: ({ searchTerm, sort, categories }) => {
         const params = new URLSearchParams();
-        if (category) {
-          params.append("category", category);
-        }
+        // if (category) {
+        //   params.append("category", category);
+        // }
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
         }

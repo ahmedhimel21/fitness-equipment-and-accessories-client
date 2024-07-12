@@ -3,13 +3,11 @@ import { TProduct } from "../../../types";
 type TProductDetailsProps = {
   product: TProduct;
   handleAddToCart: () => Promise<void>;
-  isProductOutOfStock: boolean;
 };
 
 const ProductDetailsCard = ({
   product,
   handleAddToCart,
-  isProductOutOfStock,
 }: TProductDetailsProps) => {
   return (
     <>
@@ -29,12 +27,12 @@ const ProductDetailsCard = ({
           <div className="card-actions justify-end">
             <button
               className={`btn ${
-                isProductOutOfStock ? "btn-disabled" : "btn-primary"
+                !product.stock ? "btn-disabled" : "btn-primary"
               }`}
               onClick={handleAddToCart}
-              disabled={isProductOutOfStock}
+              disabled={product.stock === 0}
             >
-              {isProductOutOfStock ? "Out of Stock" : "Add to Cart"}
+              {!product.stock ? "Out of Stock" : "Add to Cart"}
             </button>
           </div>
         </div>

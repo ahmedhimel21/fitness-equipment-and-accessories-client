@@ -28,6 +28,7 @@ const Category = () => {
             <input
               type="checkbox"
               className="checkbox"
+              checked={categories.includes(category.name)}
               onChange={() => handleCategoryChange(category.name)}
             />
             <span>{category.name}</span>

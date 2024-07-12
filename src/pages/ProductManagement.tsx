@@ -19,8 +19,10 @@ const ProductManagement = () => {
   }
   //handle delete
   const handleDelete = (id: string) => {
-    deleteProduct(id);
-    toast.success("Product deleted successfully");
+    if (window.confirm("Are you sure, you want to delete")) {
+      deleteProduct(id);
+      toast.success("Product deleted successfully");
+    }
   };
 
   return (

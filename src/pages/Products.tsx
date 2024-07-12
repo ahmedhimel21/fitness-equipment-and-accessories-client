@@ -6,23 +6,17 @@ import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 import SearchBar from "../components/ui/productsPage/SearchBar";
 import Sorting from "../components/ui/productsPage/Sorting";
 import { useGetProductsQuery } from "../redux/features/product/productApi";
-import { clearCategory } from "../redux/features/category/categorySlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { TProduct } from "../types";
 
 const Products = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   //view details  button functionality
   const handleViewDetails = (id: string) => {
     navigate(`/products/details/${id}`);
   };
-  // grab category name from local state
-  const selectedCategory = useAppSelector(
-    (state: RootState) => state.category.category
-  );
 
   // grab filtering value from local state
   const { searchTerm, sort, categories } = useAppSelector(
@@ -34,15 +28,10 @@ const Products = () => {
     error,
     isLoading,
   } = useGetProductsQuery({
-    category: selectedCategory,
     searchTerm,
     sort,
     categories,
   });
-  // reset filters
-  const handleFilterReset = () => {
-    dispatch(clearCategory());
-  };
   //if state is loading return loading page
   if (isLoading) {
     return (
@@ -73,14 +62,6 @@ const Products = () => {
           <ClearFilterButton></ClearFilterButton>
         </div>
         <h1 className="text-2xl font-bold mb-4">Products</h1>
-        {selectedCategory && (
-          <div className="mb-4">
-            <span className="mr-2">Category: {selectedCategory}</span>
-            <button className="btn btn-secondary" onClick={handleFilterReset}>
-              Clear Filter
-            </button>
-          </div>
-        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products?.data?.map((product: TProduct) => (
             <div key={product._id} className="border p-4">
@@ -92,7 +73,7 @@ const Products = () => {
               <h2 className="text-xl">{product.name}</h2>
               <p>Price: ${product.price}</p>
               <button
-                onClick={() => handleViewDetails(product._id)}
+                onClick={() => handleViewDetails(product._id!)}
                 className="btn btn-primary mt-2"
               >
                 View Details

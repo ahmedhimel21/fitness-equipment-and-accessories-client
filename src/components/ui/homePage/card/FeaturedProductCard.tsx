@@ -26,7 +26,7 @@ const FeaturedProductCard = ({
               <h3 className="text-xl mb-2">{product.name}</h3>
               <p className="mb-2">Price: ${product.price}</p>
               <button
-                onClick={() => handleViewDetails(product._id)}
+                onClick={() => handleViewDetails(product._id!)}
                 className="btn btn-primary mb-2"
               >
                 View Details
