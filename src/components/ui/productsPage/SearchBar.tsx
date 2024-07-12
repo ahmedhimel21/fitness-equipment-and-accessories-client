@@ -1,13 +1,23 @@
+import { useCallback } from "react";
 import { setSearchTerm } from "../../../redux/features/filter/filterSlice";
 import { useAppDispatch } from "../../../redux/hooks";
+import _ from "lodash";
 
 const SearchBar = () => {
   const dispatch = useAppDispatch();
+  // implementing debounce using lodash
+  const debouncedSetSearchTerm = useCallback(
+    _.debounce((term) => {
+      dispatch(setSearchTerm(term));
+    }, 500),
+    []
+  );
   return (
     <>
       <label className="input input-bordered flex items-center gap-2">
         <input
-          onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+          // onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+          onChange={(e) => debouncedSetSearchTerm(e.target.value)}
           type="text"
           className="grow"
           placeholder="Search"
