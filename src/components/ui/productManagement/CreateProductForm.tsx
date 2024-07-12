@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import handleImageUpload from "../../../utils/handleImageUpload";
-import { useCreateProductMutation } from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import productApi from "../../../redux/features/product/productApi";
 
 const CreateProductForm = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const [createProduct] = useCreateProductMutation();
+  const [createProduct] = productApi.useCreateProductMutation();
 
   const onSubmit = async (data: any) => {
     const file = data.image[0];

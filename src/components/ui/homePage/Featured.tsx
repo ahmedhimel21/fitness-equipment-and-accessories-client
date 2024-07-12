@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useGetProductsQuery } from "../../../redux/features/product/productApi";
 import ProgressBar from "../global/ProgressBar";
 import ErrorPage from "../global/ErrorPage";
 import FeaturedProductCard from "./card/FeaturedProductCard";
+import productApi from "../../../redux/features/product/productApi";
 
 const Featured = () => {
   // get data which is fetched by RTK query
@@ -10,7 +10,7 @@ const Featured = () => {
     data: products,
     isLoading,
     error,
-  } = useGetProductsQuery({ undefined });
+  } = productApi.useGetProductsQuery({ undefined });
 
   const navigate = useNavigate();
 

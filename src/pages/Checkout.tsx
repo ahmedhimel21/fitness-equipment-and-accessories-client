@@ -2,11 +2,11 @@
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
-import { useCreateOrderMutation } from "../redux/features/order/orderApi";
 import { clearCart } from "../redux/features/cart/cartSlice";
 import { toast } from "sonner";
 import CheckoutForm from "../components/ui/checkout/CheckoutForm";
 import { useNavigate } from "react-router-dom";
+import orderApi from "../redux/features/order/orderApi";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Checkout = () => {
   const cart = useAppSelector((state: RootState) => state.cart);
   const dispatch = useAppDispatch();
 
-  const [createOrder] = useCreateOrderMutation();
+  const [createOrder] = orderApi.useCreateOrderMutation();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data: any) => {

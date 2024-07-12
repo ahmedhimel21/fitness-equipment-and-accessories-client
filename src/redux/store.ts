@@ -24,7 +24,6 @@ const persistedItemsReducer = persistReducer(persistConfig, cartReducer);
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    // category: categoryReducer,
     filters: filterReducer,
     cart: persistedItemsReducer,
   },

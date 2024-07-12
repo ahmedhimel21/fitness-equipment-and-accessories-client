@@ -1,16 +1,17 @@
 import { toast } from "sonner";
 import ErrorPage from "../components/ui/global/ErrorPage";
 import ProgressBar from "../components/ui/global/ProgressBar";
-import {
-  useDeleteProductMutation,
-  useGetProductsQuery,
-} from "../redux/features/product/productApi";
 import { TProduct } from "../types";
 import { NavLink } from "react-router-dom";
+import productApi from "../redux/features/product/productApi";
 
 const ProductManagement = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery({});
-  const [deleteProduct] = useDeleteProductMutation();
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = productApi.useGetProductsQuery({});
+  const [deleteProduct] = productApi.useDeleteProductMutation();
   if (isLoading) {
     return <ProgressBar></ProgressBar>;
   }

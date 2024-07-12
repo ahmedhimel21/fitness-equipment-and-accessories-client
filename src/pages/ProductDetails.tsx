@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useGetSpecificProductQuery } from "../redux/features/product/productApi";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { setToCart } from "../redux/features/cart/cartSlice";
@@ -7,10 +6,11 @@ import { toast } from "sonner";
 import ProductDetailsCard from "../components/ui/ProductDetailsPage/ProductDetailsCard";
 import ProgressBar from "../components/ui/global/ProgressBar";
 import ErrorPage from "../components/ui/global/ErrorPage";
+import productApi from "../redux/features/product/productApi";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useGetSpecificProductQuery(id);
+  const { data, isLoading, error } = productApi.useGetSpecificProductQuery(id);
   // destructure single product
   const product = data?.data;
   const dispatch = useAppDispatch();

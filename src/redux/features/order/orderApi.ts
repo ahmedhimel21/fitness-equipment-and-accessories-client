@@ -15,4 +15,4 @@ const orderApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useCreateOrderMutation } = orderApi;
+export default orderApi;

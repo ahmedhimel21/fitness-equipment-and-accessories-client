@@ -5,10 +5,10 @@ import Category from "../components/ui/productsPage/Category";
 import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 import SearchBar from "../components/ui/productsPage/SearchBar";
 import Sorting from "../components/ui/productsPage/Sorting";
-import { useGetProductsQuery } from "../redux/features/product/productApi";
 import { useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { TProduct } from "../types";
+import productApi from "../redux/features/product/productApi";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Products = () => {
     data: products,
     error,
     isLoading,
-  } = useGetProductsQuery({
+  } = productApi.useGetProductsQuery({
     searchTerm,
     sort,
     categories,

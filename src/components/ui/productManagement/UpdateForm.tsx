@@ -2,20 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  useGetSpecificProductQuery,
-  useUpdateProductMutation,
-} from "../../../redux/features/product/productApi";
 import { toast } from "sonner";
 import handleImageUpload from "../../../utils/handleImageUpload";
+import productApi from "../../../redux/features/product/productApi";
 
 const UpdateForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   //get specific data
-  const { data } = useGetSpecificProductQuery(id);
+  const { data } = productApi.useGetSpecificProductQuery(id);
   //update product
-  const [updateProduct] = useUpdateProductMutation();
+  const [updateProduct] = productApi.useUpdateProductMutation();
 
   const { register, handleSubmit } = useForm({
     values: data?.data,
