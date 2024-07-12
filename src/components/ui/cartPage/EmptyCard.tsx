@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const EmptyCard = () => {
   return (
     <>
@@ -11,12 +13,11 @@ const EmptyCard = () => {
             products and find something you like!
           </p>
           <div className="flex justify-center">
-            <button
-              // onClick={handleGoToProducts}
-              className="btn btn-primary text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
-            >
-              Shop Now
-            </button>
+            <NavLink to="/products">
+              <button className="btn btn-primary text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
+                Shop Now
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
