@@ -5,7 +5,7 @@ const Benefits = () => {
     <>
       <div className="my-8">
         <h2 className="text-2xl font-bold text-center mb-8">Why Choose Us</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {benefitsData.map((benefit, index) => (
             <div key={index} className="text-center border p-4 rounded-lg">
               <img

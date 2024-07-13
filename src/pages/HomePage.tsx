@@ -6,7 +6,7 @@ import Gallery from "../components/ui/homePage/Gallery";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="space-y-12">
       <Banner></Banner>
       <Categories></Categories>
       <Featured></Featured>
