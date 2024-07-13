@@ -1,11 +1,13 @@
+import TeamIntroCard from "../components/ui/aboutUs/TeamIntroCard";
+import TestimonialsCard from "../components/ui/aboutUs/TestimonialsCard";
 import { teamMembers, testimonials } from "../utils/aboutUsData";
 
 const AboutUs = () => {
   return (
     <>
-      <div className="container mx-auto p-4 space-y-8 mb-8">
+      <div className="container mx-auto p-4 space-y-12">
         {/* Company Overview */}
-        <section className="text-center">
+        <div className="text-center">
           <h2 className="text-3xl font-bold mb-4">Company Overview</h2>
           <p className="text-lg">
             Our company has a rich history of providing the best gym equipment
@@ -13,54 +15,43 @@ const AboutUs = () => {
             is to empower people to lead healthier lives, and our vision is to
             become the leading provider of fitness solutions worldwide.
           </p>
-        </section>
+        </div>
 
         {/* Team Introduction */}
-        <section>
+        <div>
           <h2 className="text-3xl font-bold mb-4 text-center">Meet Our Team</h2>
           <div className="flex flex-wrap justify-center gap-8">
             {teamMembers.map((member) => (
-              <div key={member.name} className="max-w-xs text-center">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="rounded-full w-32 h-32 mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-md">{member.role}</p>
-                <p className="text-sm text-gray-600">{member.bio}</p>
-              </div>
+              <TeamIntroCard member={member}></TeamIntroCard>
             ))}
           </div>
-        </section>
+        </div>
 
         {/* Customer Testimonials */}
-        <section>
-          <h2 className="text-3xl font-bold mb-4 text-center">
-            Customer Testimonials
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-semibold text-center text-gray-800 mb-4">
+            Customer reviews
           </h2>
-          <div className="space-y-8">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="text-center">
-                <p className="text-lg italic">"{testimonial.quote}"</p>
-                <p className="text-md font-semibold mt-2">
-                  - {testimonial.name}
-                </p>
-              </div>
+          <p className="text-center text-gray-600 mb-12">
+            What our customers are saying..
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialsCard key={index} testimonial={testimonial} />
             ))}
           </div>
-        </section>
+        </div>
 
         {/* Contact Information */}
-        <section className="text-center">
+        <div className="text-center">
           <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg">
             Have questions or feedback? We'd love to hear from you!
           </p>
-          <p className="mt-2">Email: contact@company.com</p>
-          <p>Phone: (123) 456-7890</p>
-          <p>Address: 123 Fitness Ave, Gym City, Country</p>
-        </section>
+          <p className="mt-2">Email: ahmedhimel000@gmail.com</p>
+          <p>Phone: (+880) 01800000000 </p>
+          <p>Address: 123 Fitness Hub, Jashore, Bangladesh</p>
+        </div>
       </div>
     </>
   );

@@ -27,21 +27,21 @@ export const teamMembers = [
 
 export const testimonials = [
   {
-    name: "Emily Johnson",
-    quote: "The best fitness equipment I have ever used! Highly recommend.",
+    name: "Lance Jarvis",
+    testimonial:
+      "Great quality products at affordable prices. The delivery was quick and the items were well-packaged. I am a very happy customer!",
+    image: "../../public/images/team4.jpg",
   },
   {
-    name: "Michael Brown",
-    quote: "Great customer service and top-quality products.",
+    name: "Ericka Lynda",
+    testimonial:
+      "I had a wonderful shopping experience. The staff was very helpful and the products exceeded my expectations. Will definitely shop here again.",
+    image: "../../public/images/team2.jpg",
   },
   {
-    name: "Sarah Thompson",
-    quote:
-      "I have been using their products for years and couldn't be happier with the results.",
-  },
-  {
-    name: "David Wilson",
-    quote:
-      "Their customer support is amazing, always ready to help with any questions.",
+    name: "Neil Wilford",
+    testimonial:
+      "The products from this store are top-notch! I am very satisfied with my purchase and the customer service was excellent. Highly recommended!",
+    image: "../../public/images/team3.jpg",
   },
 ];
