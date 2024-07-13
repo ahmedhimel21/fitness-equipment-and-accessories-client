@@ -1,6 +1,6 @@
 # # Fitness Hub
 
-[Live URL](https://car-washing-backend.vercel.app/)
+[Live URL](https://fitness-hub-ruby.vercel.app/)
 
 This is the frontend part of the Fitness Hub e-commerce application built using React, React Router DOM, Redux, RTK Query, Tailwind CSS, and DaisyUI.
 
