@@ -56,6 +56,11 @@ This is the frontend part of the Fitness Hub e-commerce application built using 
 - Responsive Design: Built with Tailwind CSS and DaisyUI for a mobile-first responsive design.
 - Debounced Search: Reduces API calls while searching.
 
+### APIs
+
+This frontend interacts with the backend APIs to fetch product data, manage cart operations. Refer to the backend repository for detailed API documentation.
+[Backend Repository](https://github.com/ahmedhimel21/fitness-equipment-and-accessories-backend)
+
 ### Technologies
 
 - React: JavaScript library for building user interfaces.
