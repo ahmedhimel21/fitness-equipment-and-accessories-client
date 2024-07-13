@@ -1,12 +1,13 @@
 # # Fitness Hub
 
-This is the frontend part of the e-commerce application built using React, React Router DOM, Redux, RTK Query, Tailwind CSS, and DaisyUI.
+[Live URL](https://car-washing-backend.vercel.app/)
+
+This is the frontend part of the Fitness Hub e-commerce application built using React, React Router DOM, Redux, RTK Query, Tailwind CSS, and DaisyUI.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
 - [Features](#features)
 - [APIs](#apis)
 - [Technologies](#technologies)
@@ -45,39 +46,25 @@ This is the frontend part of the e-commerce application built using React, React
 2. You can manage the state using Redux, and data fetching is handled by RTK Query.
 3. For styling, Tailwind CSS and DaisyUI are used to create responsive and modern UI components.
 
-### Project Structure
+### Features
 
-├── src
-│ ├── assets
-│ ├── components
-│ │ ├── layouts
-│ │ ├── UI
-│ ├── pages
-│ │ ├── AboutUs
-│ │ ├── Cart
-│ │ ├── Checkout
-│ │ ├── HomePage
-│ │ ├── ProductDetails
-│ │ |── ProductManagement
-│ │ ├── Products
-| |
-│ │  
-│ ├── redux
-| | |---api
-| | | |---baseApi.ts
-│ │ ├── features
-│ │ │ ├── cart
-│ │ │ ├── filter
-│ │ │ └── order
-│ │ └── store.ts
-│ ├── App.tsx
-│ ├── index.tsx
-| |--main.tsx
-│ └──routes
-| |--utils
-├── public
-│ └── images
-├── tailwind.config.js
-├── tsconfig.json
-├── package.json
-└── README.md
+- Product Listings: Displays all products with search and filter functionalities.
+- Categories: Filter products by categories with the ability to select multiple categories.
+- Sorting: Sort products by price and other criteria.
+- Cart Management: Add, remove, and update product quantities in the cart.
+- Checkout: Collect user information and process orders.
+- Responsive Design: Built with Tailwind CSS and DaisyUI for a mobile-first responsive design.
+- Debounced Search: Reduces API calls while searching.
+
+### Technologies
+
+- React: JavaScript library for building user interfaces.
+- Redux: State management library.
+- RTK Query: Data fetching and caching tool.
+- React Router DOM: Declarative routing for React.
+- Tailwind CSS: Utility-first CSS framework.
+- DaisyUI: Tailwind CSS components.
+- lodash: Debounce api calls
+- react-beforeunload: Listen to the beforeunload window event in React.
+- redux-persist: to persist redux local state to local storage
+- sonner: showing toast
