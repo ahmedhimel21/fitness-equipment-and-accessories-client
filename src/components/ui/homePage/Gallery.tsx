@@ -7,44 +7,21 @@ const Gallery = () => {
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer.jpg"
+              src="/happyCustomer.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer1.jpg"
+              src="/happyCustomer1.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer2.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="grid gap-4">
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer3.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer4.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer5.jpg"
+              src="/happyCustomer2.jpg"
               alt=""
             />
           </div>
@@ -53,21 +30,21 @@ const Gallery = () => {
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer6.jpg"
+              src="/happyCustomer3.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer7.jpg"
+              src="/happyCustomer4.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer8.jpg"
+              src="/happyCustomer5.jpg"
               alt=""
             />
           </div>
@@ -76,21 +53,44 @@ const Gallery = () => {
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer9.jpg"
+              src="/happyCustomer6.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer10.jpg"
+              src="/happyCustomer7.jpg"
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="../../../../public/images/happyCustomer11.jpg"
+              src="/happyCustomer8.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="grid gap-4">
+          <div>
+            <img
+              className="h-auto max-w-full rounded-lg"
+              src="/happyCustomer9.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              className="h-auto max-w-full rounded-lg"
+              src="/happyCustomer10.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              className="h-auto max-w-full rounded-lg"
+              src="/happyCustomer11.jpg"
               alt=""
             />
           </div>

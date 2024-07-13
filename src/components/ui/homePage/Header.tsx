@@ -37,7 +37,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="flex justify-center items-center navbar-center">
-          <img className="size-7" src="../../../../public/favicon.png" alt="" />
+          <img className="size-7" src="/favicon.png" alt="" />
           <a className="text-xl font-bold ml-2">
             Fitness <span className="text-primary">H</span>ub
           </a>

@@ -3,11 +3,7 @@ const Footer = () => {
     <>
       <footer className="footer footer-center bg-primary text-primary-content p-10 rounded-lg">
         <aside>
-          <img
-            className="size-12 rounded-lg"
-            src="../../../../public/footer.jpg"
-            alt=""
-          />
+          <img className="size-12 rounded-lg" src="/footer.jpg" alt="" />
           <p className="font-bold">
             Fitness Hub
             <br />
