@@ -22,7 +22,6 @@ const Products = () => {
   const { searchTerm, sort, categories } = useAppSelector(
     (state: RootState) => state.filters
   );
-  // console.log(minPrice, maxPrice);
   //fetching data
   const {
     data: products,

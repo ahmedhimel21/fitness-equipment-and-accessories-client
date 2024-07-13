@@ -24,10 +24,13 @@ const CreateProductForm = () => {
       stock: stock,
       image: image,
     };
+    console.log(image);
     try {
-      await createProduct(product);
-      toast.success("Product created successfully");
-      navigate("/products/management");
+      if (image) {
+        await createProduct(product);
+        toast.success("Product created successfully");
+        navigate("/products/management");
+      }
     } catch (err) {
       console.log(err);
     }

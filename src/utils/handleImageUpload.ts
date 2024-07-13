@@ -1,11 +1,13 @@
 const handleImageUpload = async (file: string | Blob) => {
-  console.log(import.meta.env.IMGBB_API_KEY);
+  // console.log(process.env.VITE_IMGBB_API_KEY);
+  const secretKey = import.meta.env.VITE_IMGBB_KEY;
+  console.log(secretKey);
 
   const formData = new FormData();
   formData.append("image", file);
   try {
     const response = await fetch(
-      `https://api.imgbb.com/1/upload?expiration=600&key=714124e4f93a40200764049dd9c6a386`,
+      `https://api.imgbb.com/1/upload?expiration=600&key=${secretKey}`,
       {
         method: "POST",
         body: formData,
