@@ -1,35 +1,52 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button, Carousel } from "flowbite-react";
+import { BannerData } from "../../../utils/staticData";
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
-    <>
-      <div
-        className="hero min-h-screen mb-8"
-        style={{
-          backgroundImage:
-            "url(https://i.ibb.co/hR6S4Yd/istockphoto-1400986326-2048x2048.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md rounded-lg">
-            <h1 className="mb-5 text-5xl font-bold">
-              "Elevate Your Fitness Journey"
-            </h1>
-            <p className="mb-5">
-              "Discover the perfect blend of quality and performance with our
-              premium range of gym equipment and accessories. Whether you're a
-              beginner or a seasoned athlete, our products are designed to
-              support your fitness goals and help you achieve peak performance.
-              From durable weights to ergonomic accessories, find everything you
-              need to build your ideal workout space and elevate your fitness
-              journey to the next level."
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <Carousel>
+        {BannerData.map((BannerData) => (
+          <BannerDetails key={BannerData.id} BannerData={BannerData} />
+        ))}
+      </Carousel>
+    </div>
   );
 };
 
 export default Banner;
+
+const BannerDetails = ({ BannerData }: { BannerData: any }) => {
+  const { title, subTitle, img, desc, descClr, link, btnText } = BannerData;
+  const textStyle = {
+    color: descClr,
+  };
+  return (
+    <div
+      className="w-full  h-full lg:min-h-[90vh] py-10 lg:py-0"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="max-w-7xl mx-auto flex items-center h-full  lg:min-h-[50vh] px-5 lg:px-3 ">
+        <div className="text-white ">
+          <h3 className="text-xl lg:text-[40px] mb-2">{title}</h3>
+          <h1 className="text-2xl lg:text-[60px] font-bold my-1 lg:my-4">
+            {subTitle}
+          </h1>
+          <p style={textStyle} className="text-sm lg:text-xl mb-5 max-w-2xl">
+            {desc}
+          </p>
+
+          <Button color="failure">
+            <Link to={link}>{btnText}</Link>{" "}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
