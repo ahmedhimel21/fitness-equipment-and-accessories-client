@@ -1,4 +1,4 @@
-import { categoriesArr } from "../../../../utils/categoriesData";
+import { CategoryData } from "../../../../utils/staticData";
 
 type TCategoriesCardProps = {
   handleCategory: (category: string) => void;
@@ -7,23 +7,27 @@ type TCategoriesCardProps = {
 const CategoriesCard = ({ handleCategory }: TCategoriesCardProps) => {
   return (
     <>
-      <div className="my-8">
-        <h2 className="text-2xl font-bold mb-4">Categories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categoriesArr?.map((category, index) => (
+      <div className="bg-lightBg text-secondary">
+        <div className="text-center pt-10">
+          <h1 className="text-2xl lg:text-4xl font-bold text-primary">
+            Featured Category
+          </h1>
+          <h3 className="text-sm lg:text-base">
+            Get Your Desired Product from Featured Category!
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-5 max-w-7xl mx-auto py-10 px-5 lg:px-0">
+          {CategoryData?.map((category) => (
             <div
-              key={index}
-              className="cursor-pointer border p-4 rounded-lg"
-              onClick={() => handleCategory(category.name)}
+              key={category.id}
+              onClick={() => handleCategory(category?.name)}
+              className="cursor-pointer"
             >
-              <div className="w-full h-48 flex items-center justify-center">
-                <img
-                  className="w-full h-48 object-contain"
-                  src={category.image}
-                  alt={category.name}
-                />
+              <div className=" text-center category-card flex items-center  justify-center gap-3">
+                <div className="text-lg lg:text-2xl ">{category?.icon}</div>
+                <h1>{category?.name}</h1>
               </div>
-              <h2 className="text-center mt-2">{category.name}</h2>
             </div>
           ))}
         </div>
