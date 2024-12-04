@@ -60,7 +60,7 @@ body {
 }
 
 .desc-bg-two {
-  background-image: url("../../public/assets/main-bg-2.jpg");
+  background-image: url("/product-desc-2.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;

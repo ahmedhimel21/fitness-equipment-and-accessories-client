@@ -109,7 +109,7 @@ const Header = () => {
             active={location.pathname == "/Products"}
             className="text-white hover:text-primary"
           >
-            <Link to={"/Products"}> Products </Link>
+            <Link to={"/products"}> Products </Link>
           </Navbar.Link>
 
           <Navbar.Link className="text-white hover:text-primary">
@@ -125,17 +125,10 @@ const Header = () => {
           </Navbar.Link>
 
           <Navbar.Link
-            active={location.pathname == "/Offers"}
+            active={location.pathname == "/about"}
             className="text-white hover:text-primary"
           >
-            <Link to={"/Offers"}> Offers</Link>
-          </Navbar.Link>
-
-          <Navbar.Link
-            active={location.pathname == "/about-us"}
-            className="text-white hover:text-primary"
-          >
-            <Link to={"/about-us"}> About Us</Link>
+            <Link to={"/about"}> About Us</Link>
           </Navbar.Link>
 
           <Navbar.Link
