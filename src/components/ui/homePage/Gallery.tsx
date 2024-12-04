@@ -1,8 +1,12 @@
 const Gallery = () => {
   return (
-    <div className="py-8">
-      <h2 className="text-2xl font-bold text-center mb-8">Happy Customers</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="bg-lightBg text-secondary lg:pb-28">
+      <div className="text-center pb-10">
+        <h1 className="text-2xl lg:text-4xl font-bold text-primary">
+          Happy Customers
+        </h1>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
         <div className="grid gap-4">
           <div>
             <img

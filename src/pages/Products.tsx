@@ -1,86 +1,82 @@
-import { useNavigate } from "react-router-dom";
-import ErrorPage from "../components/ui/global/ErrorPage";
-import ProgressBar from "../components/ui/global/ProgressBar";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import Category from "../components/ui/productsPage/Category";
-import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 import SearchBar from "../components/ui/productsPage/SearchBar";
-import Sorting from "../components/ui/productsPage/Sorting";
 import { useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
-import { TProduct } from "../types";
 import productApi from "../redux/features/product/productApi";
+import PaginationProducts from "../utils/Pagination";
+import FeaturedProductCard from "../components/ui/homePage/card/FeaturedProductCard";
+import { useState } from "react";
+import Sorting from "../components/ui/productsPage/Sorting";
+import ClearFilterButton from "../components/ui/productsPage/ClearFilterButton";
 
 const Products = () => {
-  const navigate = useNavigate();
-
-  //view details  button functionality
-  const handleViewDetails = (id: string) => {
-    navigate(`/products/details/${id}`);
-  };
-
   // grab filtering value from local state
   const { searchTerm, sort, categories } = useAppSelector(
     (state: RootState) => state.filters
   );
   //fetching data
-  const {
-    data: products,
-    error,
-    isLoading,
-  } = productApi.useGetProductsQuery({
+  const { data: products } = productApi.useGetProductsQuery({
     searchTerm,
     sort,
     categories,
   });
-  //if state is loading return loading page
-  if (isLoading) {
-    return (
-      <div className="h-full flex justify-center items-center">
-        <ProgressBar></ProgressBar>
-      </div>
-    );
-  }
-  //if state is error return error page
-  if (error) {
-    return (
-      <div className="h-full flex justify-center items-center">
-        <ErrorPage></ErrorPage>
-      </div>
-    );
-  }
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(12);
+
+  //Change Page
+  const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
+  const handlePrevBtn = () => setCurrentPage(currentPage - 1);
+  const handleNextBtn = () => setCurrentPage(currentPage + 1);
 
   return (
     <>
-      <div className="mb-8">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-          <SearchBar></SearchBar>
-          {/* category */}
-          <Category></Category>
-
-          {/* sorting */}
-          <Sorting></Sorting>
-          {/* clear button */}
-          <ClearFilterButton></ClearFilterButton>
+      <div className="bg-lightBg text-secondary">
+        <div className="text-center pt-10">
+          <h1 className="text-2xl lg:text-4xl font-bold text-primary">
+            All Of Our Products
+          </h1>
+          <h3 className="text-sm lg:text-base">
+            Check & Get Your Desired Products!
+          </h3>
         </div>
-        <h1 className="text-2xl font-bold mb-4">Products</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products?.data?.map((product: TProduct) => (
-            <div key={product._id} className="border p-4">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover mb-4"
-              />
-              <h2 className="text-xl">{product.name}</h2>
-              <p>Price: ${product.price}</p>
-              <button
-                onClick={() => handleViewDetails(product._id!)}
-                className="btn btn-primary mt-2"
-              >
-                View Details
-              </button>
+
+        <div className="max-w-7xl mx-auto py-10 px-5 lg:px-0">
+          <SearchBar></SearchBar>
+
+          <div className="flex flex-col lg:flex-row  items-start gap-5 ">
+            <div className="w-full lg:w-1/5 bg-gray-200 px-2 pt-2 pb-10">
+              <h2 className="text-2xl font-bold text-center mb-10">
+                Filter Products
+              </h2>
+              {/* CheckBox Sorting */}
+              <div className="flex flex-row lg:flex-col gap-5 items-start">
+                {/* CheckBox Sorting By Category */}
+                <Category></Category>
+                <Sorting></Sorting>
+                <ClearFilterButton></ClearFilterButton>
+              </div>
             </div>
-          ))}
+
+            {/* SHowing data */}
+            <div className="w-full lg:w-4/5 ">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-5 place-items-center">
+                {products?.data?.map((product: any) => (
+                  <FeaturedProductCard key={product?._id} product={product} />
+                ))}
+              </div>
+              <PaginationProducts
+                currentPage={currentPage}
+                postPerPage={postPerPage}
+                totalPost={products?.data?.length}
+                handlePrevBtn={handlePrevBtn}
+                handleNextBtn={handleNextBtn}
+                paginate={paginate}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

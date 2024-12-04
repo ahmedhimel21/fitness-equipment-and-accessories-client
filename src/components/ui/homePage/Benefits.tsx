@@ -1,20 +1,35 @@
-import { benefitsData } from "../../../utils/benefitsData";
+import { Link } from "react-router-dom";
+import { serviceData } from "../../../utils/staticData";
 
 const Benefits = () => {
   return (
     <>
-      <div className="my-8">
-        <h2 className="text-2xl font-bold text-center mb-8">Why Choose Us</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {benefitsData.map((benefit, index) => (
-            <div key={index} className="text-center border p-4 rounded-lg">
-              <img
-                src={benefit.image}
-                alt={benefit.title}
-                className="w-full h-48 object-cover mb-4 rounded"
-              />
-              <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-              <p>{benefit.description}</p>
+      <div className="bg-lightBg text-secondary py-10 lg:py-28">
+        <div className="max-w-7xl mx-auto px-5 lg:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10">
+          {serviceData.map((data) => (
+            <div
+              key={data.id}
+              className="bg-white p-5 pb-8 rounded-md  relative "
+            >
+              <div className="flex flex-col items-center justify-center gap-1 mb-2">
+                <div className="text-4xl lg:text-6xl mb-2 text-primary ">
+                  {data.icon}
+                </div>
+                <h1 className="text-lg lg:text-xl font-bold ">{data.title}</h1>
+                <h3 className="text-base lg:text-lg ">{data.sub}</h3>
+              </div>
+              <p className="text-sm text-paraClr lg:text-base mb-5">
+                {data.desc}
+              </p>
+
+              <div className="absolute bottom-5 left-5">
+                <Link
+                  to={data.link}
+                  className="text-primary font-bold hover:underline"
+                >
+                  {data.btnText}
+                </Link>
+              </div>
             </div>
           ))}
         </div>

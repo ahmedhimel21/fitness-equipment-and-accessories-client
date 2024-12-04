@@ -1,10 +1,11 @@
+import { Checkbox, Label } from "flowbite-react";
 import {
   removeCategory,
   setCategory,
 } from "../../../redux/features/filter/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { RootState } from "../../../redux/store";
-import { categoriesArr } from "../../../utils/categoriesData";
+import { CategoryData } from "../../../utils/staticData";
 
 const Category = () => {
   const dispatch = useAppDispatch();
@@ -21,18 +22,18 @@ const Category = () => {
   };
   return (
     <>
-      <div className="flex space-x-4 mt-4">
-        <label className="text-md font-semibold">Filter product :</label>
-        {categoriesArr.map((category) => (
-          <label key={category.name} className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              className="checkbox"
-              checked={categories.includes(category.name)}
-              onChange={() => handleCategoryChange(category.name)}
+      <div className="ml-2">
+        <h2 className="text-lg text-start">Category</h2>
+        {CategoryData.map((category) => (
+          <div key={category?.id} className="flex items-center gap-2">
+            <Checkbox
+              id={category?.name}
+              checked={categories.includes(category?.name)}
+              onChange={() => handleCategoryChange(category?.name)}
+              value={category?.name}
             />
-            <span>{category.name}</span>
-          </label>
+            <Label>{category?.name}</Label>
+          </div>
         ))}
       </div>
     </>

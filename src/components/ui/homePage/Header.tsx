@@ -62,9 +62,12 @@ const Header = () => {
     <>
       <Navbar className=" text-white" style={navbarStyle}>
         <Navbar.Brand to="/">
-          <span className="self-center whitespace-nowrap text-xl lg:text-2xl font-bold text-primary">
+          <Link
+            to="/"
+            className="self-center whitespace-nowrap text-xl lg:text-2xl font-bold text-primary"
+          >
             FitnessHub
-          </span>
+          </Link>
         </Navbar.Brand>
 
         <div className="flex gap-2 md:order-2">

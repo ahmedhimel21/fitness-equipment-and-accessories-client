@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import ProgressBar from "../global/ProgressBar";
 import ErrorPage from "../global/ErrorPage";
 import FeaturedProductCard from "./card/FeaturedProductCard";
 import productApi from "../../../redux/features/product/productApi";
-import { useEffect, useState } from "react";
 import { Button } from "flowbite-react";
 
 const Featured = () => {
@@ -13,15 +13,6 @@ const Featured = () => {
   });
 
   const products = data?.data;
-
-  const [randomProducts, setRandomProducts] = useState([]);
-
-  //Get Random 6 Products
-  useEffect(() => {
-    const shuffledProducts = [...products].sort(() => Math.random() - 0.5);
-    const selectedProducts = shuffledProducts.slice(0, 8);
-    setRandomProducts(selectedProducts);
-  }, [products]);
 
   // if data is loading showing progress
   if (isLoading) {
@@ -39,6 +30,7 @@ const Featured = () => {
       </div>
     );
   }
+
   return (
     <>
       <div className="bg-lightBg text-secondary">
@@ -52,7 +44,7 @@ const Featured = () => {
         </div>
 
         <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 max-w-7xl mx-auto py-10 px-3 md:px-3 lg:px-2 place-items-center">
-          {randomProducts?.map((product) => (
+          {products?.slice(0, 8).map((product: any) => (
             <FeaturedProductCard key={product?._id} product={product} />
           ))}
         </div>

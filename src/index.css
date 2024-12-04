@@ -53,7 +53,7 @@ body {
 }
 
 .desc-bg {
-  background-image: url("../../public/assets/corsair-xeneon-flex.jpg");
+  background-image: url("/desc2.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;

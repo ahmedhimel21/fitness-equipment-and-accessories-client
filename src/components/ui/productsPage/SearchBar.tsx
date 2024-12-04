@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { setSearchTerm } from "../../../redux/features/filter/filterSlice";
 import { useAppDispatch } from "../../../redux/hooks";
+import { AiOutlineSearch } from "react-icons/ai";
 import _ from "lodash";
 
 const SearchBar = () => {
@@ -14,27 +15,33 @@ const SearchBar = () => {
   );
   return (
     <>
-      <label className="input input-bordered flex items-center gap-2">
-        <input
-          // onChange={(e) => dispatch(setSearchTerm(e.target.value))}
-          onChange={(e) => debouncedSetSearchTerm(e.target.value)}
-          type="text"
-          className="grow"
-          placeholder="Search"
-        />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          className="h-4 w-4 opacity-70"
-        >
-          <path
-            fillRule="evenodd"
-            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </label>
+      <div className="flex items-center justify-center my-5">
+        {/*Search Filtering */}
+        <form>
+          <div className="w-52 lg:w-[500px]">
+            <div className="relative w-full">
+              <input
+                type="search"
+                id="search-dropdown"
+                onChange={(e) => {
+                  debouncedSetSearchTerm(e.target.value);
+                }}
+                className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 rounded-md shadow-md border-l-2 border border-gray-300 focus:ring-primary focus:border-primary "
+                placeholder="Search Products..."
+                required
+              />
+
+              <button
+                type="submit"
+                className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-primary rounded-r-lg border border-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 "
+              >
+                <AiOutlineSearch className="text-2xl" />
+                <span className="sr-only">Search</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Carousel } from "flowbite-react";
 import { BannerData } from "../../../utils/staticData";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setCategory } from "../../../redux/features/filter/filterSlice";
 
 const Banner = () => {
   return (
@@ -22,6 +24,15 @@ const BannerDetails = ({ BannerData }: { BannerData: any }) => {
   const textStyle = {
     color: descClr,
   };
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  // grab category name: navigate and dispatch categoryName basis on category name
+  const handleCategory = (category: string) => {
+    navigate("/products"), dispatch(setCategory(category));
+  };
+
   return (
     <div
       className="w-full  h-full lg:min-h-[90vh] py-10 lg:py-0"
@@ -42,8 +53,8 @@ const BannerDetails = ({ BannerData }: { BannerData: any }) => {
             {desc}
           </p>
 
-          <Button color="failure">
-            <Link to={link}>{btnText}</Link>{" "}
+          <Button color="failure" onClick={() => handleCategory(link)}>
+            {btnText}
           </Button>
         </div>
       </div>

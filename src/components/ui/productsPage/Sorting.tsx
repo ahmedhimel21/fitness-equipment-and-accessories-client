@@ -1,3 +1,4 @@
+import { Label, Select } from "flowbite-react";
 import { setSort } from "../../../redux/features/filter/filterSlice";
 import { useAppDispatch } from "../../../redux/hooks";
 
@@ -13,13 +14,15 @@ const Sorting = () => {
   };
   return (
     <>
-      <div className="mt-4">
-        <label className="mr-2 text-md font-semibold">Sort By Price</label>
-        <select className="select select-bordered" onChange={handleSortChange}>
+      <div className="w-full">
+        <div className="mb-2 block">
+          <Label htmlFor="countries" value="Select Price Range" />
+        </div>
+        <Select id="countries" onChange={handleSortChange}>
           <option value="">Price</option>
-          <option value="asc">High to Low</option>
-          <option value="desc">Low to High</option>
-        </select>
+          <option value="asc">High To Low</option>
+          <option value="desc">Low To High</option>
+        </Select>
       </div>
     </>
   );
