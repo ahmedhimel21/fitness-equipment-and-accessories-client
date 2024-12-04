@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TCartInitialState } from "../../../types";
-import EmptyCard from "./EmptyCard";
+import { Button, Table } from "flowbite-react";
+import { Icon } from "@iconify/react";
 
 type TCartCardProps = {
   cart: TCartInitialState;
@@ -17,83 +18,113 @@ const CartCard = ({
 }: TCartCardProps) => {
   return (
     <>
-      <div className=" p-4 my-8">
-        {!(cart.items.length === 0) ? (
-          <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
-        ) : (
-          ""
-        )}
-        {cart.items.length === 0 ? (
-          <EmptyCard></EmptyCard>
-        ) : (
-          <div>
+      <div className="bg-lightBg text-secondary min-h-screen">
+        <div className="max-w-7xl mx-auto px-3 lg:px-0 py-10">
+          <div className="bg-white shadow-sm rounded-md p-2 px-4">
+            <h1 className="text-2xl mb-5 font-bold">Shopping Cart</h1>
+
             <div className="overflow-x-auto">
-              <table className="table-auto w-full mb-4">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2">Product</th>
-                    <th className="px-4 py-2">Price</th>
-                    <th className="px-4 py-2">Quantity</th>
-                    <th className="px-4 py-2">Total</th>
-                    <th className="px-4 py-2">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.items.map((item) => (
-                    <tr key={item._id}>
-                      <td className="border px-4 py-2">{item.name}</td>
-                      <td className="border px-4 py-2">
-                        ${item.price.toFixed(2)}
-                      </td>
-                      <td className="border px-4 py-2">
-                        <div className="flex items-center justify-center">
-                          <button
-                            className="btn btn-secondary btn-xs"
-                            onClick={() =>
-                              handleUpdateQuantity(item._id!, item.quantity - 1)
-                            }
-                            disabled={item.quantity <= 1}
-                          >
-                            -
-                          </button>
-                          <span className="mx-2">{item.quantity}</span>
-                          <button
-                            className="btn btn-secondary btn-xs"
-                            onClick={() =>
-                              handleUpdateQuantity(item._id!, item.quantity + 1)
-                            }
-                            disabled={item.quantity >= item.stock}
-                          >
-                            +
-                          </button>
+              <Table className="w-full">
+                <Table.Head>
+                  <Table.HeadCell className="truncate">Image</Table.HeadCell>
+                  <Table.HeadCell className="truncate">
+                    Product name
+                  </Table.HeadCell>
+                  <Table.HeadCell className="truncate">Quantity</Table.HeadCell>
+                  <Table.HeadCell className="truncate">Remove</Table.HeadCell>
+                  <Table.HeadCell className="truncate">Price</Table.HeadCell>
+                </Table.Head>
+
+                <Table.Body className="divide-y">
+                  {cart?.items?.map((pro) => (
+                    <Table.Row key={pro?._id} className="bg-white  ">
+                      <Table.Cell className="truncate">
+                        <img
+                          src={pro?.image}
+                          alt={pro?.name}
+                          width={40}
+                          height={40}
+                          className="max-w-full h-auto"
+                        />
+                      </Table.Cell>
+
+                      <Table.Cell>
+                        <p className="text-sm lg:text-base"> {pro?.name}</p>
+                      </Table.Cell>
+
+                      <Table.Cell className="truncate">
+                        <div className="flex items-center gap-2">
+                          <p className="text-base lg:text-xl font-bold">
+                            {" "}
+                            {pro?.quantity}
+                          </p>
+
+                          <div className="flex flex-col gap-1">
+                            <button
+                              onClick={() =>
+                                handleUpdateQuantity(pro._id!, pro.quantity + 1)
+                              }
+                              disabled={pro.quantity >= pro.stock}
+                              className="bg-green-500 text-white px-2 py-0.5"
+                            >
+                              +
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleUpdateQuantity(pro._id!, pro.quantity - 1)
+                              }
+                              disabled={pro.quantity <= 1}
+                              className="bg-blue-500 text-white px-2 py-0.5"
+                            >
+                              -
+                            </button>
+                          </div>
                         </div>
-                      </td>
-                      <td className="border px-4 py-2">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </td>
-                      <td className="border px-4 py-2">
-                        <button
-                          className="btn btn-error btn-xs"
-                          onClick={() => handleRemoveFromCart(item._id!)}
-                        >
-                          Remove
+                      </Table.Cell>
+
+                      <Table.Cell className="truncate">
+                        <button onClick={() => handleRemoveFromCart(pro._id!)}>
+                          <Icon
+                            icon="material-symbols:delete-outline"
+                            className="text-primary text-2xl"
+                          />
                         </button>
-                      </td>
-                    </tr>
+                      </Table.Cell>
+
+                      <Table.Cell className="truncate">
+                        {pro?.price * pro?.quantity} Tk
+                      </Table.Cell>
+                    </Table.Row>
                   ))}
-                </tbody>
-              </table>
+                </Table.Body>
+              </Table>
+
+              <div className="text-lg lg:text-2xl font-bold  text-end w-full px-5">
+                <hr className="my-3" />
+                <h1>
+                  Total:{" "}
+                  <span className="text-primary">
+                    {totalPrice().toFixed(2) || 0} Tk
+                  </span>
+                </h1>
+                <hr className="my-3" />
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-              <h2 className="text-2xl mb-2 sm:mb-0">
-                Total: ${totalPrice().toFixed(2)}
-              </h2>
-              <NavLink to="/products/checkout">
-                <button className="btn btn-primary">Proceed to Checkout</button>
-              </NavLink>
+
+            <div className="flex items-center justify-between px-5 my-3">
+              <Link to={"/products"}>
+                <Button color="blue" className="text-xs lg:text-base">
+                  Continue Shopping
+                </Button>
+              </Link>
+              <Link to={"/products/checkout"}>
+                <Button color="blue" className="text-sm lg:text-base">
+                  Confirm Order
+                </Button>
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
