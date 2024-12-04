@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const SuccessPage = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-white">
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
           <h1 className="text-4xl font-bold text-green-600 mb-4">
             Order Placed!

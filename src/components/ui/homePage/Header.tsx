@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Dropdown, Navbar } from "flowbite-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { RootState } from "../../../redux/store";
 import { removeFromCart } from "../../../redux/features/cart/cartSlice";
+import { CategoryData } from "../../../utils/staticData";
+import { setCategory } from "../../../redux/features/filter/filterSlice";
 
 const Header = () => {
   const location = useLocation();
@@ -26,6 +28,13 @@ const Header = () => {
   // handle remove from cart
   const handleRemoveFromCart = (id: string) => {
     dispatch(removeFromCart(id));
+  };
+
+  const navigate = useNavigate();
+
+  // grab category name: navigate and dispatch categoryName basis on category name
+  const handleCategory = (category: string) => {
+    navigate("/products"), dispatch(setCategory(category));
   };
 
   useEffect(() => {
@@ -105,34 +114,13 @@ const Header = () => {
 
           <Navbar.Link className="text-white hover:text-primary">
             <Dropdown inline label="Categories">
-              <Dropdown.Item>
-                <Link to={"/categories/Processor"}> Processor </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                {" "}
-                <Link to={"/categories/Motherboard"}> Motherboard </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                {" "}
-                <Link to={"/categories/RAM"}> RAM </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to={"/categories/PowerSupply"}> Power Supply Unit </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                {" "}
-                <Link to={"/categories/StorageDevice"}>
-                  {" "}
-                  Storage Device{" "}
-                </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                {" "}
-                <Link to={"/categories/Monitor"}> Monitor </Link>{" "}
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to={"/categories/accesorries"}> Others </Link>{" "}
-              </Dropdown.Item>
+              {CategoryData.map((category) => (
+                <Dropdown.Item>
+                  <div onClick={() => handleCategory(category?.name)}>
+                    {category?.name}
+                  </div>{" "}
+                </Dropdown.Item>
+              ))}
             </Dropdown>
           </Navbar.Link>
 

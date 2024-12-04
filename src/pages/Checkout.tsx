@@ -14,6 +14,13 @@ const Checkout = () => {
   const cart = useAppSelector((state: RootState) => state.cart);
   const dispatch = useAppDispatch();
 
+  const totalPrice = () => {
+    return cart?.items?.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+  };
+
   const [createOrder] = orderApi.useCreateOrderMutation();
   const { register, handleSubmit } = useForm();
 
@@ -41,6 +48,7 @@ const Checkout = () => {
         register={register}
         cart={cart}
         onSubmit={onSubmit}
+        total={totalPrice}
       ></CheckoutForm>
     </>
   );
