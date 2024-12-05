@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FieldValues,
@@ -33,8 +34,8 @@ const CheckoutForm = ({
   onSubmit,
   total,
 }: TCheckoutFormProps) => {
-  const [deliveryCharge, setDeliveryCharge] = useState(60);
-  const [paymentMethod, setPaymentMethod] = useState("cashOnDelivery");
+  const [deliveryCharge, setDeliveryCharge] = useState<any>(60);
+  const [, setPaymentMethod] = useState("cashOnDelivery");
 
   const totalPayable = total() + parseInt(deliveryCharge);
   return (
@@ -160,7 +161,9 @@ const CheckoutForm = ({
                         <fieldset
                           className="flex max-w-md flex-col gap-2"
                           id="radio"
-                          onChange={(e) => setPaymentMethod(e.target.value)}
+                          onChange={(e: any) =>
+                            setPaymentMethod(e.target.value)
+                          }
                         >
                           <legend className="mb-4">
                             Select a payment method
@@ -215,7 +218,9 @@ const CheckoutForm = ({
                         <fieldset
                           className="flex max-w-md flex-col gap-2"
                           id="radio"
-                          onChange={(e) => setDeliveryCharge(e.target.value)}
+                          onChange={(e: any) =>
+                            setDeliveryCharge(e.target.value)
+                          }
                         >
                           <legend className="mb-4">
                             Select a delivery method

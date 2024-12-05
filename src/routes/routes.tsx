@@ -10,6 +10,7 @@ import AboutUs from "../pages/AboutUs";
 import SuccessPage from "../components/ui/checkout/SuccessPage";
 import UpdateForm from "../components/ui/productManagement/UpdateForm";
 import CreateProductForm from "../components/ui/productManagement/CreateProductForm";
+import Contacts from "../pages/Contacts";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "contacts",
+        element: <Contacts></Contacts>,
       },
     ],
   },

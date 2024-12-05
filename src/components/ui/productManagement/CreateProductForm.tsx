@@ -4,6 +4,8 @@ import handleImageUpload from "../../../utils/handleImageUpload";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import productApi from "../../../redux/features/product/productApi";
+import { CategoryData } from "../../../utils/staticData";
+import { Button } from "flowbite-react";
 
 const CreateProductForm = () => {
   const navigate = useNavigate();
@@ -37,11 +39,13 @@ const CreateProductForm = () => {
   };
   return (
     <>
-      <div className="mb-8 p-4">
-        <div className=" md:w-3/4 md:mx-auto">
-          <h1 className="text-3xl font-bold ml-6 mt-3">Creates Product</h1>
+      <div className="bg-lightBg text-secondary min-h-screen">
+        <div className=" max-w-4xl mx-auto px-3 lg:px-0 py-10">
           <div>
-            <div className="bg-base-100 w-full h-full shadow-2xl">
+            <div className="bg-base-100 w-full h-full shadow-2xl rounded-lg">
+              <h1 className="text-3xl font-bold ml-6 pt-3 text-center">
+                Creates Product
+              </h1>
               <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -87,9 +91,9 @@ const CreateProductForm = () => {
                     <option disabled selected>
                       Select Category
                     </option>
-                    <option>Accessories</option>
-                    <option>Gym Equipment</option>
-                    <option>Cardio Equipment</option>
+                    {CategoryData?.map((category) => (
+                      <option>{category.name}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="form-control">
@@ -115,7 +119,9 @@ const CreateProductForm = () => {
                   />
                 </div>
                 <div className="form-control mt-6 w-1/4">
-                  <button className="btn btn-primary">Create</button>
+                  <Button color="blue" className="text-sm lg:text-base">
+                    CREATE
+                  </Button>
                 </div>
               </form>
             </div>

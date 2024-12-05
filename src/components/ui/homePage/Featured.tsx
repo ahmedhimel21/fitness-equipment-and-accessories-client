@@ -1,35 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
-import ProgressBar from "../global/ProgressBar";
-import ErrorPage from "../global/ErrorPage";
 import FeaturedProductCard from "./card/FeaturedProductCard";
 import productApi from "../../../redux/features/product/productApi";
 import { Button } from "flowbite-react";
 
 const Featured = () => {
   // get data which is fetched by RTK query
-  const { data, isLoading, error } = productApi.useGetProductsQuery({
+  const { data } = productApi.useGetProductsQuery({
     undefined,
   });
 
   const products = data?.data;
-
-  // if data is loading showing progress
-  if (isLoading) {
-    return (
-      <div>
-        <ProgressBar></ProgressBar>
-      </div>
-    );
-  }
-  // if any error occur during fetching data showing error
-  if (error) {
-    return (
-      <div className="w-1/2 mx-auto">
-        <ErrorPage></ErrorPage>
-      </div>
-    );
-  }
 
   return (
     <>

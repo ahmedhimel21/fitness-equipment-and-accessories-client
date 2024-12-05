@@ -44,12 +44,12 @@ export default function Awards() {
   };
 
   return (
-    <div className="bg-lightBg text-secondary h-[50vh] ">
+    <div className="bg-lightBg text-secondary h-[50vh] py-10">
       <h1 className="text-center lg:text-4xl font-bold text-primary">
         INDUSTRY AWARDS
       </h1>
 
-      <div className="pt-10 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <Slider {...settings}>
           <div>
             <img src="/awards-1.jpg" alt="" />

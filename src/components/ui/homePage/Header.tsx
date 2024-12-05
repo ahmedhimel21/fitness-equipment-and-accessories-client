@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Dropdown, Navbar } from "flowbite-react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -53,7 +54,7 @@ const Header = () => {
     };
   }, []);
 
-  const navbarStyle = isNavbarFixed
+  const navbarStyle: any = isNavbarFixed
     ? {
         position: "fixed",
         top: 0,
@@ -106,7 +107,7 @@ const Header = () => {
             <Link to={"/"}> Home </Link>{" "}
           </Navbar.Link>
           <Navbar.Link
-            active={location.pathname == "/Products"}
+            active={location.pathname == "/products"}
             className="text-white hover:text-primary"
           >
             <Link to={"/products"}> Products </Link>
@@ -123,7 +124,12 @@ const Header = () => {
               ))}
             </Dropdown>
           </Navbar.Link>
-
+          <Navbar.Link
+            active={location.pathname == "/products/management"}
+            className="text-white hover:text-primary"
+          >
+            <Link to={"/products/management"}> Management </Link>
+          </Navbar.Link>
           <Navbar.Link
             active={location.pathname == "/about"}
             className="text-white hover:text-primary"
@@ -151,7 +157,7 @@ const Header = () => {
             display: "flex",
             flexDirection: "column",
           }}
-          tabIndex="-1"
+          tabIndex={"-1" as unknown as number}
           aria-labelledby="drawer-right-label"
         >
           <div className="bg-primary flex items-center justify-between text-white h-10 px-4 py-2">
@@ -165,7 +171,7 @@ const Header = () => {
             <div className="w-full">
               {products.length !== 0 ? (
                 <div className="px-4 my-3">
-                  {products?.map((pro) => (
+                  {products?.map((pro: any) => (
                     <div
                       key={pro?._id}
                       className="text-secondary mb-4 flex items-start justify-between w-full"
@@ -198,7 +204,7 @@ const Header = () => {
               <p>{totalPrice().toFixed(2)} Tk</p>
             </div>
 
-            <Link to={"/checkout/cart"} onClick={toggleDrawer}>
+            <Link to={"/products/checkout"} onClick={toggleDrawer}>
               {" "}
               <button className="bg-red-700 hover:bg-red-500 w-full py-1 font-bold">
                 Checkout

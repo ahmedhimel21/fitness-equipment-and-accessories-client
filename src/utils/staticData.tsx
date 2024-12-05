@@ -18,7 +18,7 @@ export const BannerData = [
     desc: "Discover premium weightlifting equipment and elevate your strength training.",
     descClr: "#ffffff",
     img: "/banner-2.jpg",
-    link: "Weightlifting",
+    link: "Dumbbells & Weights",
     btnText: "Shop Weights",
   },
   {
@@ -28,7 +28,7 @@ export const BannerData = [
     desc: "Browse yoga mats, resistance bands, and tools for the perfect stretching routine.",
     descClr: "#ffffff",
     img: "/banner-3.jpg",
-    link: "Yoga",
+    link: "Yoga & Pilates",
     btnText: "Shop Yoga Gear",
   },
   {
@@ -38,7 +38,7 @@ export const BannerData = [
     desc: "Build your ultimate home gym with our multi-functional compact equipment.",
     descClr: "#ffffff",
     img: "/banner-4.jpg",
-    link: "HomeGyms",
+    link: "Home Gyms",
     btnText: "Shop Home Gyms",
   },
   {
@@ -48,7 +48,7 @@ export const BannerData = [
     desc: "Optimize recovery with massage guns, foam rollers, and therapy tools.",
     descClr: "#ffffff",
     img: "/banner-5.jpg",
-    link: "Recovery",
+    link: "Recovery Equipment",
     btnText: "Shop Recovery Tools",
   },
   {
@@ -58,7 +58,7 @@ export const BannerData = [
     desc: "High-performance exercise bikes for your endurance and fitness training.",
     descClr: "#ffffff",
     img: "/banner-6.jpg",
-    link: "ExerciseBikes",
+    link: "Exercise Bikes",
     btnText: "Shop Exercise Bikes",
   },
   {
@@ -68,7 +68,7 @@ export const BannerData = [
     desc: "Portable fitness accessories for wherever your workouts take you.",
     descClr: "#ffffff",
     img: "/banner-7.jpg",
-    link: "Accessories",
+    link: "Gym Accessories",
     btnText: "Shop Accessories",
   },
   {

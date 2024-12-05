@@ -1,4 +1,3 @@
-import Awards from "../components/ui/homePage/Awards";
 import Banner from "../components/ui/homePage/Banner";
 import Benefits from "../components/ui/homePage/Benefits";
 import Categories from "../components/ui/homePage/Categories";
@@ -15,7 +14,6 @@ const HomePage = () => {
       <ProductDesc></ProductDesc>
       <Benefits></Benefits>
       <Gallery></Gallery>
-      <Awards></Awards>
     </div>
   );
 };

@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import handleImageUpload from "../../../utils/handleImageUpload";
 import productApi from "../../../redux/features/product/productApi";
+import { CategoryData } from "../../../utils/staticData";
+import { Button } from "flowbite-react";
 
 const UpdateForm = () => {
   const navigate = useNavigate();
@@ -40,11 +42,13 @@ const UpdateForm = () => {
   };
   return (
     <>
-      <div className="mb-8 p-4">
-        <div className=" md:w-3/4 md:mx-auto">
-          <h1 className="text-3xl font-bold ml-6 mt-3">Update Product</h1>
+      <div className="bg-lightBg text-secondary min-h-screen">
+        <div className="max-w-4xl mx-auto px-3 lg:px-0 py-10">
           <div>
-            <div className="bg-base-100 w-full h-full shadow-2xl">
+            <div className="bg-base-100 w-full h-full shadow-2xl rounded-lg">
+              <h1 className="text-3xl font-bold ml-6 pt-6 text-center">
+                Update Product
+              </h1>
               <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -86,9 +90,9 @@ const UpdateForm = () => {
                     <option disabled selected>
                       Select Category
                     </option>
-                    <option>Accessories</option>
-                    <option>Gym Equipment</option>
-                    <option>Cardio Equipment</option>
+                    {CategoryData?.map((category) => (
+                      <option>{category.name}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="form-control">
@@ -112,7 +116,9 @@ const UpdateForm = () => {
                   />
                 </div>
                 <div className="form-control mt-6 w-1/4">
-                  <button className="btn btn-primary">Update</button>
+                  <Button color="blue" className="text-sm lg:text-base">
+                    UPDATE
+                  </Button>
                 </div>
               </form>
             </div>
