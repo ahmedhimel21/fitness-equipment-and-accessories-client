@@ -2,7 +2,9 @@
 
 [Live URL](https://fitness-hub-ruby.vercel.app/)
 
-This is the frontend part of the Fitness Hub e-commerce application built using React, React Router DOM, Redux, RTK Query, Tailwind CSS, and DaisyUI.
+FitnessHub is an e-commerce platform for fitness enthusiasts, designed to make discovering and purchasing fitness accessories simple and convenient.
+
+Users can explore a range of fitness products, search for specific accessories, and filter products to find items that match their needs. The platform focuses on providing a smooth product browsing experience with an intuitive and user-friendly interface.
 
 ## Table of Contents
 
